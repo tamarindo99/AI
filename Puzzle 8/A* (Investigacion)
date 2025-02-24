@@ -1,0 +1,93 @@
+¿Qué es el algoritmo A?*
+El algoritmo A* es un algoritmo de búsqueda informada que combina las ventajas de la búsqueda en anchura (BFS) y la búsqueda heurística. Utiliza una función de evaluación para priorizar los nodos más prometedores, lo que lo hace más eficiente que otros algoritmos de búsqueda.
+
+Componentes del Algoritmo A*
+Función de Evaluación (f(n)):
+
+La función de evaluación es la suma de dos componentes:
+
+g(n): El costo real desde el nodo inicial hasta el nodo actual.
+
+h(n): La heurística, que estima el costo desde el nodo actual hasta el nodo objetivo.
+
+La fórmula es:
+
+f(n)=g(n)+h(n)
+f(n)=g(n)+h(n)
+Heurística (h(n)):
+
+La heurística es una estimación del costo restante para llegar al objetivo.
+
+Para que A* sea óptimo, la heurística debe ser admisible (nunca sobreestima el costo real) y consistente (satisface la desigualdad triangular).
+
+Cola de Prioridad:
+
+A* utiliza una cola de prioridad (por ejemplo, un min-heap) para expandir siempre el nodo con el menor valor de f(n).
+
+Pasos del Algoritmo A*
+Inicialización:
+
+Crear una cola de prioridad (abierta) y un conjunto de nodos visitados (cerrados).
+
+Insertar el nodo inicial en la cola de prioridad con f(n) = g(n) + h(n).
+
+Bucle Principal:
+
+Mientras la cola de prioridad no esté vacía:
+
+Extraer el nodo con el menor valor de f(n).
+
+Si el nodo es el objetivo, devolver la solución.
+
+Expandir el nodo, generando sus sucesores.
+
+Para cada sucesor:
+
+Calcular g(n) y h(n).
+
+Si el sucesor no está en la cola de prioridad o tiene un valor de f(n) menor, insertarlo en la cola de prioridad.
+
+Terminación:
+
+Si la cola de prioridad se vacía sin encontrar el objetivo, no hay solución.
+
+Heurísticas Comunes para el 8-Puzzle
+Número de Fichas Mal Colocadas:
+
+Cuenta cuántas fichas no están en su posición correcta.
+
+Es admisible pero no muy informativa.
+
+Distancia de Manhattan:
+
+Suma las distancias horizontales y verticales de cada ficha a su posición objetivo.
+
+Es admisible y más informativa que la heurística de fichas mal colocadas.
+
+Distancia Euclidiana:
+
+Calcula la distancia en línea recta de cada ficha a su posición objetivo.
+
+No es admisible en el 8-puzzle, ya que puede sobrestimar el costo.
+
+Ventajas del Algoritmo A*
+Optimalidad:
+
+A* garantiza encontrar la solución óptima si la heurística es admisible.
+
+Eficiencia:
+
+Reduce el número de nodos explorados en comparación con BFS y DFS.
+
+Flexibilidad:
+
+Puede adaptarse a diferentes problemas cambiando la heurística.
+
+Desventajas del Algoritmo A*
+Consumo de Memoria:
+
+Almacena todos los nodos en la cola de prioridad, lo que puede ser un problema en problemas con un espacio de búsqueda grande.
+
+Dependencia de la Heurística:
+
+La eficiencia de A* depende de la calidad de la heurística. Una heurística pobre puede hacer que A* se comporte como BFS.
