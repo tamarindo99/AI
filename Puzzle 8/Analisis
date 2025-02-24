@@ -1,0 +1,135 @@
+1. Breadth-First Search (BFS)
+Características:
+Estrategia: Explora todos los nodos en un nivel antes de pasar al siguiente nivel (exploración en anchura).
+
+Optimalidad: Sí. BFS garantiza encontrar la solución óptima (el camino más corto) si existe.
+
+Complejidad Temporal: O(b^d), donde:
+
+b es el factor de ramificación (número promedio de sucesores por nodo).
+
+d es la profundidad de la solución.
+
+Complejidad Espacial: O(b^d). BFS almacena todos los nodos en memoria en el peor caso.
+
+Ventajas:
+
+Encuentra la solución óptima.
+
+Simple de implementar.
+
+Desventajas:
+
+Alto consumo de memoria, especialmente en problemas con un factor de ramificación alto.
+
+No es eficiente para problemas con soluciones profundas.
+
+Uso en 8-puzzle:
+BFS es adecuado cuando se necesita la solución óptima y el espacio de búsqueda no es demasiado grande.
+
+En el 8-puzzle, el factor de ramificación es aproximadamente 3, y la profundidad máxima es 31, por lo que BFS puede ser viable.
+
+2. Depth-First Search (DFS)
+Características:
+Estrategia: Explora un camino hasta que no puede avanzar más, luego retrocede (backtracking) y prueba otro camino.
+
+Optimalidad: No. DFS no garantiza encontrar la solución óptima, ya que puede encontrar una solución en una rama profunda antes de explorar otras ramas.
+
+Complejidad Temporal: O(b^m), donde:
+
+b es el factor de ramificación.
+
+m es la profundidad máxima del árbol.
+
+Complejidad Espacial: O(m). DFS solo almacena el camino actual en memoria.
+
+Ventajas:
+
+Bajo consumo de memoria.
+
+Puede encontrar una solución rápidamente si está en una rama profunda.
+
+Desventajas:
+
+No garantiza la solución óptima.
+
+Puede quedar atrapado en ramas infinitas si no se manejan ciclos.
+
+Uso en 8-puzzle:
+DFS no es ideal para el 8-puzzle porque no garantiza la solución óptima y puede ser ineficiente en problemas con soluciones profundas.
+
+Sin embargo, puede ser útil si la memoria es un recurso limitado.
+
+3. Iterative Deepening Depth-First Search (IDDFS)
+Características:
+Estrategia: Combina BFS y DFS. Realiza una serie de DFS con límites de profundidad crecientes.
+
+Optimalidad: Sí. IDDFS garantiza encontrar la solución óptima.
+
+Complejidad Temporal: O(b^d). Aunque parece ineficiente debido a las repeticiones, en la práctica es comparable a BFS.
+
+Complejidad Espacial: O(d). Solo almacena el camino actual en memoria.
+
+Ventajas:
+
+Encuentra la solución óptima.
+
+Bajo consumo de memoria.
+
+Desventajas:
+
+Puede ser lento en problemas con un factor de ramificación alto debido a las repeticiones.
+
+Uso en 8-puzzle:
+IDDFS es una excelente opción para el 8-puzzle porque combina la optimalidad de BFS con la eficiencia de memoria de DFS.
+
+Es especialmente útil cuando el espacio de búsqueda es grande y la memoria es limitada.
+
+4. A* (con heurística)
+Características:
+Estrategia: Utiliza una función heurística para priorizar nodos prometedores. La función de evaluación es f(n) = g(n) + h(n), donde:
+
+g(n) es el costo desde el nodo inicial hasta el nodo actual.
+
+h(n) es la heurística (estimación del costo restante hasta la solución).
+
+Optimalidad: Sí (si la heurística es admisible, es decir, nunca sobreestima el costo real).
+
+Complejidad Temporal: O(b^d). Depende de la calidad de la heurística.
+
+Complejidad Espacial: O(b^d). Almacena todos los nodos en la cola de prioridad.
+
+Ventajas:
+
+Encuentra la solución óptima.
+
+Es más eficiente que BFS cuando se usa una buena heurística.
+
+Desventajas:
+
+Requiere una heurística bien diseñada.
+
+Consumo de memoria similar a BFS.
+
+Uso en 8-puzzle:
+A* es ideal para el 8-puzzle cuando se usa una heurística como la distancia de Manhattan o el número de fichas mal colocadas.
+
+Es más eficiente que BFS porque reduce el número de nodos explorados.
+
+Comparación General
+Algoritmo	Optimalidad	Memoria	Velocidad (Worst Case)	Uso en 8-puzzle
+BFS	            Sí	      Alta	  O(b^d)	Adecuado para soluciones poco profundas.
+DFS	            No	      Baja	  O(b^m)	No recomendado, a menos que la memoria sea limitada.
+IDDFS	        Sí	      Baja	  O(b^d)	Excelente opción para equilibrio entre memoria y optimalidad.
+A*	            Sí	      Alta	  O(b^d)	Ideal con una buena heurística.
+
+Conclusión
+BFS: Es simple y garantiza la solución óptima, pero consume mucha memoria.
+
+DFS: Es eficiente en memoria pero no garantiza la solución óptima.
+
+IDDFS: Combina lo mejor de BFS y DFS: optimalidad y bajo consumo de memoria.
+
+A*: Es el más eficiente cuando se usa una buena heurística, pero requiere más memoria que IDDFS.
+
+Para el 8-puzzle, A* con una heurística como la distancia de Manhattan es la mejor opción en términos de eficiencia y optimalidad. Sin embargo, si la memoria es un problema, IDDFS es una excelente alternativa. BFS es viable para problemas pequeños, mientras que DFS no es recomendable debido a su falta de optimalidad.
