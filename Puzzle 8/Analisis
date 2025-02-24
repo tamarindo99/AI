@@ -29,6 +29,12 @@ BFS es adecuado cuando se necesita la solución óptima y el espacio de búsqued
 
 En el 8-puzzle, el factor de ramificación es aproximadamente 3, y la profundidad máxima es 31, por lo que BFS puede ser viable.
 
+Resultados:
+Número de movimientos: 22
+Nodos explorados: 84164
+Fin: 95863
+El programa tardó 85.807250875 segundos en ejecutarse.
+
 2. Depth-First Search (DFS)
 Características:
 Estrategia: Explora un camino hasta que no puede avanzar más, luego retrocede (backtracking) y prueba otro camino.
@@ -60,6 +66,9 @@ DFS no es ideal para el 8-puzzle porque no garantiza la solución óptima y pued
 
 Sin embargo, puede ser útil si la memoria es un recurso limitado.
 
+Resultados: 
+Java heap space: failed reallocation of scalar replaced objects
+
 3. Iterative Deepening Depth-First Search (IDDFS)
 Características:
 Estrategia: Combina BFS y DFS. Realiza una serie de DFS con límites de profundidad crecientes.
@@ -84,6 +93,13 @@ Uso en 8-puzzle:
 IDDFS es una excelente opción para el 8-puzzle porque combina la optimalidad de BFS con la eficiencia de memoria de DFS.
 
 Es especialmente útil cuando el espacio de búsqueda es grande y la memoria es limitada.
+
+Resultados:
+
+El programa tardó 138.593577625 segundos en ejecutarse.
+Número de movimientos: 22
+Nodos explorados: 83546
+Fin: 93513
 
 4. A* (con heurística)
 Características:
@@ -110,6 +126,11 @@ Desventajas:
 Requiere una heurística bien diseñada.
 
 Consumo de memoria similar a BFS.
+
+Resultados:
+Nodos explorados: 14695
+Número de movimientos: 23
+El programa tardó 0.066927583 segundos en ejecutarse.
 
 Uso en 8-puzzle:
 A* es ideal para el 8-puzzle cuando se usa una heurística como la distancia de Manhattan o el número de fichas mal colocadas.
