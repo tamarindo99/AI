@@ -1,0 +1,172 @@
+Regresión en IA: Definición y Fórmulas
+¿Qué es la regresión?
+La regresión es un método estadístico utilizado en Inteligencia Artificial (IA) y Machine Learning para predecir valores numéricos continuos a partir de datos de entrada. A diferencia de la clasificación, que predice etiquetas o categorías discretas, la regresión se enfoca en predecir cantidades.
+
+Tipos comunes de regresión:
+Regresión Lineal:
+
+Modela la relación entre las variables como una línea recta.
+
+Fórmula:
+
+Copy
+y = mx + b
+y: Variable dependiente (valor a predecir).
+
+x: Variable independiente (característica de entrada).
+
+m: Pendiente de la línea.
+
+b: Intersección con el eje y.
+
+Regresión Polinómica:
+
+Extiende la regresión lineal para modelar relaciones no lineales utilizando polinomios.
+
+Fórmula:
+
+Copy
+y = a_n * x^n + a_{n-1} * x^{n-1} + ... + a_0
+a_n, a_{n-1}, ..., a_0: Coeficientes del polinomio.
+
+x: Variable independiente.
+
+n: Grado del polinomio.
+
+Regresión Logística:
+
+Aunque se llama "regresión", en realidad se usa para problemas de clasificación binaria.
+
+Predice la probabilidad de que una instancia pertenezca a una clase.
+
+Fórmula (función sigmoide):
+
+Copy
+P(y=1|x) = 1 / (1 + e^(-z))
+z = w_0 + w_1 * x_1 + w_2 * x_2 + ... + w_n * x_n
+
+P(y=1|x): Probabilidad de que la clase sea 1.
+
+w_i: Pesos del modelo.
+
+x_i: Características de entrada.
+
+Regresión Ridge:
+
+Variante de la regresión lineal que incluye regularización L2 para evitar el sobreajuste.
+
+Fórmula (función de costo):
+
+Copy
+Costo = Σ(y_i - ŷ_i)^2 + α * Σ(w_j)^2
+α: Parámetro de regularización.
+
+w_j: Pesos del modelo.
+
+Regresión Lasso:
+
+Variante de la regresión lineal que incluye regularización L1 para evitar el sobreajuste.
+
+Fórmula (función de costo):
+
+Copy
+Costo = Σ(y_i - ŷ_i)^2 + α * Σ|w_j|
+α: Parámetro de regularización.
+
+w_j: Pesos del modelo.
+
+Regresión de Árbol de Decisión:
+
+Utiliza un árbol de decisiones para predecir valores numéricos.
+
+Regresión de Soporte Vectorial (SVR):
+
+Basado en Support Vector Machines (SVM), se usa para problemas de regresión no lineal.
+
+Fórmula (función de minimización):
+
+Copy
+Minimizar: (1/2) * ||w||^2 + C * Σ(ξ_i + ξ_i^*)
+w: Vector de pesos.
+
+C: Parámetro de regularización.
+
+ξ_i, ξ_i^*: Variables de holgura.
+
+Métricas para evaluar modelos de regresión:
+Error Cuadrático Medio (MSE):
+
+Mide el promedio de los errores al cuadrado entre los valores reales y los predichos.
+
+Fórmula:
+
+Copy
+MSE = (1/n) * Σ(y_i - ŷ_i)^2
+y_i: Valor real.
+
+ŷ_i: Valor predicho.
+
+n: Número de muestras.
+
+Coeficiente de Determinación (R²):
+
+Indica cuánta variabilidad de la variable dependiente es explicada por el modelo.
+
+Fórmula:
+
+Copy
+R² = 1 - (Σ(y_i - ŷ_i)^2) / (Σ(y_i - ȳ)^2)
+y_i: Valor real.
+
+ŷ_i: Valor predicho.
+
+ȳ: Media de los valores reales.
+
+Error Absoluto Medio (MAE):
+
+Mide el promedio de los errores absolutos.
+
+Fórmula:
+
+Copy
+MAE = (1/n) * Σ|y_i - ŷ_i|
+y_i: Valor real.
+
+ŷ_i: Valor predicho.
+
+n: Número de muestras.
+
+Aplicaciones de la regresión en IA:
+Predicción de precios:
+
+Predecir el precio de una casa basado en características como tamaño, ubicación, etc.
+
+Pronósticos:
+
+Predecir ventas futuras, demanda de productos o tendencias económicas.
+
+Medicina:
+
+Predecir valores como la presión arterial o los niveles de glucosa en la sangre.
+
+Ingeniería:
+
+Estimar la vida útil de un componente mecánico basado en condiciones de uso.
+
+Ejemplo de regresión lineal en Python:
+python
+Copy
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+# Datos de ejemplo
+X = np.array([[1], [2], [3], [4], [5]])  # Variable independiente
+y = np.array([2, 4, 5, 4, 5])             # Variable dependiente
+
+# Crear y entrenar el modelo
+modelo = LinearRegression()
+modelo.fit(X, y)
+
+# Predecir un valor
+prediccion = modelo.predict([[6]])
+print(f"Predicción: {prediccion[0]}")
