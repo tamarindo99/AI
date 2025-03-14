@@ -9,7 +9,6 @@ Modela la relación entre las variables como una línea recta.
 
 Fórmula:
 
-Copy
 y = mx + b
 y: Variable dependiente (valor a predecir).
 
@@ -25,7 +24,6 @@ Extiende la regresión lineal para modelar relaciones no lineales utilizando pol
 
 Fórmula:
 
-Copy
 y = a_n * x^n + a_{n-1} * x^{n-1} + ... + a_0
 a_n, a_{n-1}, ..., a_0: Coeficientes del polinomio.
 
@@ -41,7 +39,6 @@ Predice la probabilidad de que una instancia pertenezca a una clase.
 
 Fórmula (función sigmoide):
 
-Copy
 P(y=1|x) = 1 / (1 + e^(-z))
 z = w_0 + w_1 * x_1 + w_2 * x_2 + ... + w_n * x_n
 
@@ -57,7 +54,6 @@ Variante de la regresión lineal que incluye regularización L2 para evitar el s
 
 Fórmula (función de costo):
 
-Copy
 Costo = Σ(y_i - ŷ_i)^2 + α * Σ(w_j)^2
 α: Parámetro de regularización.
 
@@ -69,7 +65,6 @@ Variante de la regresión lineal que incluye regularización L1 para evitar el s
 
 Fórmula (función de costo):
 
-Copy
 Costo = Σ(y_i - ŷ_i)^2 + α * Σ|w_j|
 α: Parámetro de regularización.
 
@@ -85,7 +80,6 @@ Basado en Support Vector Machines (SVM), se usa para problemas de regresión no 
 
 Fórmula (función de minimización):
 
-Copy
 Minimizar: (1/2) * ||w||^2 + C * Σ(ξ_i + ξ_i^*)
 w: Vector de pesos.
 
@@ -100,7 +94,6 @@ Mide el promedio de los errores al cuadrado entre los valores reales y los predi
 
 Fórmula:
 
-Copy
 MSE = (1/n) * Σ(y_i - ŷ_i)^2
 y_i: Valor real.
 
@@ -114,7 +107,6 @@ Indica cuánta variabilidad de la variable dependiente es explicada por el model
 
 Fórmula:
 
-Copy
 R² = 1 - (Σ(y_i - ŷ_i)^2) / (Σ(y_i - ȳ)^2)
 y_i: Valor real.
 
@@ -128,7 +120,6 @@ Mide el promedio de los errores absolutos.
 
 Fórmula:
 
-Copy
 MAE = (1/n) * Σ|y_i - ŷ_i|
 y_i: Valor real.
 
@@ -155,7 +146,6 @@ Estimar la vida útil de un componente mecánico basado en condiciones de uso.
 
 Ejemplo de regresión lineal en Python:
 python
-Copy
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
