@@ -58,18 +58,30 @@ public class RunningGoalRecommender {
         tiempoSinCorrer = clamp(tiempoSinCorrer, 0, 365);
 
         // Set inputs
-        fb.setVariable("GENERO", genero);
-        fb.setVariable("EDAD", edad);
-        fb.setVariable("PESO", peso);
-        fb.setVariable("CONDICION_FISICA", condicionFisica);
-        fb.setVariable("HISTORIA_LESIONES", historiaLesiones);
-        fb.setVariable("NUTRICION", nutricion);
-        fb.setVariable("HORAS_SUENO", horasSueno);
-        fb.setVariable("CONSUMO_AGUA", consumoAgua);
-        fb.setVariable("USO_SUPLEMENTOS", usoSuplementos);
-        fb.setVariable("FRECUENCIA_ENTRENAMIENTO", frecuenciaEntrenamiento);
-        fb.setVariable("TIEMPO_CORRIENDO", tiempoCorriendo);
-        fb.setVariable("TIEMPO_SIN_CORRER", tiempoSinCorrer);
+        //fb.setVariable("GENERO", genero);
+        //fb.setVariable("EDAD", edad);
+        //fb.setVariable("PESO", peso);
+        //fb.setVariable("CONDICION_FISICA", condicionFisica);
+        //fb.setVariable("HISTORIA_LESIONES", historiaLesiones);
+        //fb.setVariable("NUTRICION", nutricion);
+        //fb.setVariable("HORAS_SUENO", horasSueno);
+        //fb.setVariable("CONSUMO_AGUA", consumoAgua);
+        //fb.setVariable("USO_SUPLEMENTOS", usoSuplementos);
+        //fb.setVariable("FRECUENCIA_ENTRENAMIENTO", frecuenciaEntrenamiento);
+        //fb.setVariable("TIEMPO_CORRIENDO", tiempoCorriendo);
+        //fb.setVariable("TIEMPO_SIN_CORRER", tiempoSinCorrer);
+        fb.setVariable("GENERO", Math.round(Math.random()));          // 0 = female, 1 = male
+        fb.setVariable("EDAD", 18 + Math.floor(Math.random() * 50));  // 18-67 years
+        fb.setVariable("PESO", 45 + Math.floor(Math.random() * 60));  // 45-104 kg
+        fb.setVariable("CONDICION_FISICA", 1 + Math.floor(Math.random() * 10)); // 1-10
+        fb.setVariable("HISTORIA_LESIONES", Math.floor(Math.random() * 11)); // 0-10
+        fb.setVariable("NUTRICION", 1 + Math.floor(Math.random() * 10)); // 1-10
+        fb.setVariable("HORAS_SUENO", 4 + Math.floor(Math.random() * 7)); // 4-10 hours
+        fb.setVariable("CONSUMO_AGUA", 1 + Math.floor(Math.random() * 5));  // 1.0-5.0 liters/day
+        fb.setVariable("USO_SUPLEMENTOS", Math.round(Math.random())); // 0=no, 1=yes
+        fb.setVariable("FRECUENCIA_ENTRENAMIENTO", 1 + Math.floor(Math.random() * 7)); // 1-7 days/week
+        fb.setVariable("TIEMPO_CORRIENDO", Math.floor(Math.random() * 1000)); // 0-999 days
+        fb.setVariable("TIEMPO_SIN_CORRER", Math.floor(Math.random() * 100)); // 0-99 days
     }
 
     private static int clamp(int value, int min, int max) {
@@ -243,7 +255,7 @@ public class RunningGoalRecommender {
                "    OR : MAX;\n" +
                "    ACT : MIN;\n" +
                "    ACCU : MAX;\n\n" +
-               
+
                "    // Physical condition rules\n" +
                "    RULE 1: IF CONDICION_FISICA IS EXCELENTE AND EDAD IS JOVEN_ADULTO AND HISTORIA_LESIONES IS NINGUNA THEN META_A_CORRER IS MARATON;\n" +
                "    RULE 2: IF CONDICION_FISICA IS BUENA AND EDAD IS ADULTO AND HISTORIA_LESIONES IS LEVE THEN META_A_CORRER IS CORRER_10KM;\n" +
@@ -253,7 +265,7 @@ public class RunningGoalRecommender {
                "    RULE 6: IF PESO IS OBESO AND CONDICION_FISICA IS MALA THEN META_A_CORRER IS CAMINAR;\n" +
                "    RULE 7: IF PESO IS SOBREPESO AND NUTRICION IS BUENA THEN META_A_CORRER IS CORRER_1KM;\n" +
                "    RULE 8: IF PESO IS NORMAL AND NUTRICION IS BUENA THEN META_A_CORRER IS CORRER_5KM;\n" +
-               "    RULE 9: IF PESO IS LIVIANO AND NUTRICION IS EXCELENTE THEN META_A_CORRER IS CORRER_10KM;\n" +
+               "    RULE 9: IF PESO IS LIVIANO AND NUTRICION IS BUENA THEN META_A_CORRER IS CORRER_10KM;\n" +
         
                "    // Training experience rules\n" +
                "    RULE 10: IF FRECUENCIA_ENTRENAMIENTO IS DIARIO AND TIEMPO_CORRIENDO IS EXPERTO THEN META_A_CORRER IS MARATON;\n" +
