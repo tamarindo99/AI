@@ -7,7 +7,6 @@ public class RunningGoalRecommender {
 
     public static void main(String[] args) {
         try {
-            // Load the FCL file (created programmatically)
             FIS fis = FIS.createFromString(createFclString(), true);
             
             if (fis == null) {
@@ -15,20 +14,26 @@ public class RunningGoalRecommender {
                 return;
             }
 
-            // Get the function block
             FunctionBlock fb = fis.getFunctionBlock("Corredores");
 
-            // Example inputs (replace with actual user input)
-            setInputs(fb, 0, 28, 68, 7, 2, 8, 7, 3, 1, 5, 200, 10);
+            fb.setVariable("GENERO", Math.round(Math.random()));                                // 0 = female, 1 = male
+            fb.setVariable("EDAD", 18 + Math.floor(Math.random() * 50));                        // 18-67 years
+            fb.setVariable("PESO", 45 + Math.floor(Math.random() * 60));                        // 45-104 kg
+            fb.setVariable("CONDICION_FISICA", 1 + Math.floor(Math.random() * 10));             // 1-10
+            fb.setVariable("HISTORIA_LESIONES", Math.floor(Math.random() * 11));                // 0-10
+            fb.setVariable("NUTRICION", 1 + Math.floor(Math.random() * 10));                    // 1-10
+            fb.setVariable("HORAS_SUENO", 4 + Math.floor(Math.random() * 7));                   // 4-10 hours
+            fb.setVariable("CONSUMO_AGUA", 1 + Math.floor(Math.random() * 5));                  // 1.0-5.0 liters/day
+            fb.setVariable("USO_SUPLEMENTOS", Math.round(Math.random()));                       // 0=no, 1=yes
+            fb.setVariable("FRECUENCIA_ENTRENAMIENTO", 1 + Math.floor(Math.random() * 7));      // 1-7 days/week
+            fb.setVariable("TIEMPO_CORRIENDO", Math.floor(Math.random() * 1000));               // 0-999 days
+            fb.setVariable("TIEMPO_SIN_CORRER", Math.floor(Math.random() * 100));               // 0-99 days
 
-            // Evaluate the system
             fb.evaluate();
 
-            // Show output variable's chart
             Variable meta = fb.getVariable("META_A_CORRER");
             JFuzzyChart.get().chart(meta, meta.getDefuzzifier(), true);
 
-            // Print output value and detailed description
             System.out.printf("Recommended running goal score: %.2f%n", meta.getValue());
             printDetailedGoalDescription(meta.getValue());
             
@@ -36,60 +41,6 @@ public class RunningGoalRecommender {
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    private static void setInputs(FunctionBlock fb, int genero, int edad, double peso, 
-                                 int condicionFisica, int historiaLesiones, int nutricion,
-                                 int horasSueno, double consumoAgua, int usoSuplementos,
-                                 int frecuenciaEntrenamiento, int tiempoCorriendo, 
-                                 int tiempoSinCorrer) {
-        // Validate inputs
-        genero = clamp(genero, 0, 1);
-        edad = clamp(edad, 5, 100);
-        peso = clamp(peso, 20, 200);
-        condicionFisica = clamp(condicionFisica, 1, 10);
-        historiaLesiones = clamp(historiaLesiones, 0, 10);
-        nutricion = clamp(nutricion, 1, 10);
-        horasSueno = clamp(horasSueno, 0, 12);
-        consumoAgua = clamp(consumoAgua, 0, 10);
-        usoSuplementos = clamp(usoSuplementos, 0, 1);
-        frecuenciaEntrenamiento = clamp(frecuenciaEntrenamiento, 0, 7);
-        tiempoCorriendo = clamp(tiempoCorriendo, 0, 1000);
-        tiempoSinCorrer = clamp(tiempoSinCorrer, 0, 365);
-
-        // Set inputs
-        //fb.setVariable("GENERO", genero);
-        //fb.setVariable("EDAD", edad);
-        //fb.setVariable("PESO", peso);
-        //fb.setVariable("CONDICION_FISICA", condicionFisica);
-        //fb.setVariable("HISTORIA_LESIONES", historiaLesiones);
-        //fb.setVariable("NUTRICION", nutricion);
-        //fb.setVariable("HORAS_SUENO", horasSueno);
-        //fb.setVariable("CONSUMO_AGUA", consumoAgua);
-        //fb.setVariable("USO_SUPLEMENTOS", usoSuplementos);
-        //fb.setVariable("FRECUENCIA_ENTRENAMIENTO", frecuenciaEntrenamiento);
-        //fb.setVariable("TIEMPO_CORRIENDO", tiempoCorriendo);
-        //fb.setVariable("TIEMPO_SIN_CORRER", tiempoSinCorrer);
-        fb.setVariable("GENERO", Math.round(Math.random()));          // 0 = female, 1 = male
-        fb.setVariable("EDAD", 18 + Math.floor(Math.random() * 50));  // 18-67 years
-        fb.setVariable("PESO", 45 + Math.floor(Math.random() * 60));  // 45-104 kg
-        fb.setVariable("CONDICION_FISICA", 1 + Math.floor(Math.random() * 10)); // 1-10
-        fb.setVariable("HISTORIA_LESIONES", Math.floor(Math.random() * 11)); // 0-10
-        fb.setVariable("NUTRICION", 1 + Math.floor(Math.random() * 10)); // 1-10
-        fb.setVariable("HORAS_SUENO", 4 + Math.floor(Math.random() * 7)); // 4-10 hours
-        fb.setVariable("CONSUMO_AGUA", 1 + Math.floor(Math.random() * 5));  // 1.0-5.0 liters/day
-        fb.setVariable("USO_SUPLEMENTOS", Math.round(Math.random())); // 0=no, 1=yes
-        fb.setVariable("FRECUENCIA_ENTRENAMIENTO", 1 + Math.floor(Math.random() * 7)); // 1-7 days/week
-        fb.setVariable("TIEMPO_CORRIENDO", Math.floor(Math.random() * 1000)); // 0-999 days
-        fb.setVariable("TIEMPO_SIN_CORRER", Math.floor(Math.random() * 100)); // 0-99 days
-    }
-
-    private static int clamp(int value, int min, int max) {
-        return Math.max(min, Math.min(max, value));
-    }
-
-    private static double clamp(double value, double min, double max) {
-        return Math.max(min, Math.min(max, value));
     }
 
     private static void printDetailedGoalDescription(double goalValue) {
@@ -210,8 +161,8 @@ public class RunningGoalRecommender {
     
                "FUZZIFY CONSUMO_AGUA\n" +
                "    TERM BAJO := (1,1) (2,0);\n" +
-               "    TERM MODERADO := (1,0) (3,1) (4,0);\n" +  // Cambiado de 1.5 a 1
-               "    TERM ALTO := (3,0) (5,1);\n" +            // Cambiado de 3.5 a 3
+               "    TERM MODERADO := (1,0) (3,1) (4,0);\n" + 
+               "    TERM ALTO := (3,0) (5,1);\n" +           
                "END_FUZZIFY\n\n" +
     
                "FUZZIFY USO_SUPLEMENTOS\n" +
