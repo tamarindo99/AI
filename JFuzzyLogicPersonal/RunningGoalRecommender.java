@@ -243,7 +243,7 @@ public class RunningGoalRecommender {
                "    OR : MAX;\n" +
                "    ACT : MIN;\n" +
                "    ACCU : MAX;\n\n" +
-        
+               
                "    // Physical condition rules\n" +
                "    RULE 1: IF CONDICION_FISICA IS EXCELENTE AND EDAD IS JOVEN_ADULTO AND HISTORIA_LESIONES IS NINGUNA THEN META_A_CORRER IS MARATON;\n" +
                "    RULE 2: IF CONDICION_FISICA IS BUENA AND EDAD IS ADULTO AND HISTORIA_LESIONES IS LEVE THEN META_A_CORRER IS CORRER_10KM;\n" +
