@@ -11,20 +11,26 @@ import seaborn as sns # for data visualization
 # Input data files are available in the "../input/" directory.
 # For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
 
+# Correct the data path to match your actual file location
+# Option 1: If the file is in the same directory as your script
 import os
-for dirname, _, filenames in os.walk('/Volumes/Eternity/Programacion/Semestre 8/AI/src/Puzzle 8//Volumes/Eternity/Programacion/Semestre 8/AI/src/Puzzle 8/breast+cancer+wisconsin+original'):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
+script_dir = os.path.dirname(os.path.abspath(__file__))
+data = os.path.join(script_dir, "breast-cancer-wisconsin.data.txt")
 
-# Any results you write to the current directory are saved as output.
+# Option 2: If you know the exact path (note the space in "Eternity 1")
+data = '/Volumes/Eternity 1/Programacion/Semestre 8/AI/src/Puzzle 8/breast+cancer+wisconsin+original/breast-cancer-wisconsin.data.txt'
 
-import warnings
-
-warnings.filterwarnings('ignore')
-
-data = '/Volumes/Eternity/Programacion/Semestre 8/AI/src/Puzzle 8/breast+cancer+wisconsin+original/breast-cancer-wisconsin.data.txt'
-
-df = pd.read_csv(data, header=None)
+# Try to load the data with error handling
+try:
+    df = pd.read_csv(data, header=None)
+    print("Data loaded successfully!")
+except FileNotFoundError:
+    print(f"Error: File not found at {data}")
+    print("Please verify the file exists at this path:")
+    print("1. Check the file name is exactly 'breast-cancer-wisconsin.data.txt'")
+    print("2. Check the file is in the same directory as your script")
+    print("3. Try using the full absolute path")
+    exit()
 
 # view dimensions of dataset
 
