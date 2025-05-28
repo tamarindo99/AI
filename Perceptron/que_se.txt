@@ -1,0 +1,27 @@
+Un perceptrón es un tipo de clasificador lineal en aprendizaje automático, que se utiliza para tareas de clasificación binaria. 
+Es una red neuronal artificial sencilla, que consta de una capa de entrada y una capa de salida. Predice si una entrada pertenece 
+a una de dos clases, basándose en una función lineal que combina ponderaciones con las características de la entrada. 
+
+Características principales de un perceptrón:
+Clasificador lineal: Realiza clasificaciones basadas en una línea o hiperplano que separa los datos. 
+Clasificación binaria: Determina si una entrada pertenece a una de dos clases. 
+Neurona artificial: Es una unidad básica de procesamiento que recibe múltiples entradas, las pondera y produce una salida. 
+Aprendizaje supervisado: Aprende los pesos y el sesgo (bias) a partir de datos de entrenamiento, ajustando iterativamente el límite 
+de decisión para clasificar correctamente las muestras. 
+Fórmula básica: La salida del perceptrón es una suma ponderada de las entradas, a la que se aplica una función de activación 
+(por ejemplo, step o sigmoide). 
+Limitaciones: No puede resolver problemas que no son linealmente separables. 
+
+Estructura y Funcionamiento:
+Entradas: El perceptrón recibe un conjunto de entradas, que representan las características de un objeto o evento que se quiere clasificar. 
+Pesos: Cada entrada tiene un peso asociado, que determina la importancia relativa de esa entrada en la clasificación. 
+Sesgo (bias): Se agrega un término de sesgo para ajustar el límite de decisión. 
+Suma ponderada: Las entradas se multiplican por sus pesos, se suman y se suma el sesgo. 
+Función de activación: La suma ponderada se aplica a una función de activación, que produce la salida del perceptrón (por ejemplo, 0 o 
+1, o un valor entre 0 y 1). 
+Aprendizaje: El perceptrón aprende ajustando los pesos y el sesgo a partir de datos de entrenamiento etiquetados, de modo que pueda 
+clasificar correctamente las entradas. 
+
+Perceptrón multicapa:
+El perceptrón multicapa extiende la idea del perceptrón simple añadiendo capas ocultas entre la entrada y la salida. Esto permite modelar 
+problemas que no son linealmente separables y que requieren una mayor complejidad de la función de clasificación. 
